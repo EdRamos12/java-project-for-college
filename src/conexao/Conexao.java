@@ -12,7 +12,7 @@ import java.sql.DriverManager;
  * @author Edu
  */
 public class Conexao {
-    private static final String URL = "jdbc:mysql://localhost:3306/gerenciador_de_imovel_2";
+    private static final String URL = "jdbc:mysql://localhost:3306/gerenciador_de_imoveis";
     private static final String USER = "root";
     private static final String PASSWORD = "admin";
     
@@ -23,8 +23,6 @@ public class Conexao {
             if (conn == null) {
                 conn = DriverManager.getConnection(URL, USER, PASSWORD);
             }
-            
-            System.out.println(conn);
             
             return conn;
         } catch (SQLException e) {
