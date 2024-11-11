@@ -327,13 +327,13 @@ public class ProprietarioWindow extends javax.swing.JFrame {
         PreparedStatement ps = null;
 
         try {
-            String sql = "DELETE FROM Cliente WHERE id_cliente = ?";
+            String sql = "DELETE FROM Proprietario WHERE id_proprietario = ?";
 
             ps = Conexao.getConexao().prepareStatement(sql);
 
             ps.setString(1, jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString());
 
-            int r = JOptionPane.showConfirmDialog(this, "Você tem certeza que quer excluir esse cliente?");
+            int r = JOptionPane.showConfirmDialog(this, "Você tem certeza que quer excluir esse proprietário?");
 
             if (r != 0) {
                 return;
@@ -404,7 +404,7 @@ public class ProprietarioWindow extends javax.swing.JFrame {
             if (!is_editing) {
                 sql = "INSERT INTO Proprietario (nome_proprietario, telefone_proprietario, email_proprietario, CPF_proprietario) VALUES (?, ?, ?, ?)";
             } else {
-                sql = "UPDATE Proprietario SET nome_proprietario = ?, telefone_proprietario = ?, email_proprietario = ?, CPF_proprietario = ? WHERE id_cliente = ?";
+                sql = "UPDATE Proprietario SET nome_proprietario = ?, telefone_proprietario = ?, email_proprietario = ?, CPF_proprietario = ? WHERE id_proprietario = ?";
             }
 
             ps = Conexao.getConexao().prepareStatement(sql);
