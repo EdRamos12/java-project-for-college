@@ -38,13 +38,13 @@ public class ProprietarioWindow extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         Nome = new javax.swing.JTextField();
         label6 = new java.awt.Label();
-        Telefone = new javax.swing.JTextField();
         label7 = new java.awt.Label();
         Email = new javax.swing.JTextField();
         label8 = new java.awt.Label();
-        CPF = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
+        CPF = new javax.swing.JFormattedTextField();
+        Telefone = new javax.swing.JFormattedTextField();
         jButton6 = new javax.swing.JButton();
         label3 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
@@ -74,8 +74,6 @@ public class ProprietarioWindow extends javax.swing.JFrame {
         label6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label6.setText("Telefone:");
 
-        Telefone.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
         label7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label7.setText("E-mail:");
 
@@ -83,8 +81,6 @@ public class ProprietarioWindow extends javax.swing.JFrame {
 
         label8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label8.setText("CPF:");
-
-        CPF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jButton5.setText("Enviar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +91,18 @@ public class ProprietarioWindow extends javax.swing.JFrame {
 
         jCheckBox2.setText("Editando");
         jCheckBox2.setEnabled(false);
+
+        try {
+            CPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            Telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout ProprietarioLayout = new javax.swing.GroupLayout(Proprietario.getContentPane());
         Proprietario.getContentPane().setLayout(ProprietarioLayout);
@@ -116,8 +124,8 @@ public class ProprietarioWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Nome)
-                            .addComponent(CPF)
                             .addComponent(Email)
+                            .addComponent(CPF)
                             .addComponent(Telefone)))
                     .addGroup(ProprietarioLayout.createSequentialGroup()
                         .addGap(117, 222, Short.MAX_VALUE)
@@ -138,7 +146,7 @@ public class ProprietarioWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Telefone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,7 +154,7 @@ public class ProprietarioWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CPF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProprietarioLayout.createSequentialGroup()
@@ -397,7 +405,7 @@ public class ProprietarioWindow extends javax.swing.JFrame {
 
         try {
             String nome = Nome.getText();
-            String telefone = Telefone.getText().replaceAll("[+\\-\\s]", "");
+            String telefone = Telefone.getText().replaceAll("[^0-9]", "");
             String email = Email.getText();
             String cpf = CPF.getText().replaceAll("[\\s.-]", "");
 
@@ -508,14 +516,14 @@ public class ProprietarioWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField CPF;
+    private javax.swing.JFormattedTextField CPF;
     private javax.swing.JButton Editar_Cliente;
     private javax.swing.JTextField Email;
     private javax.swing.JButton Excluir;
     private javax.swing.JTextField Nome;
     private javax.swing.JButton Novo_Cliente;
     private javax.swing.JDialog Proprietario;
-    private javax.swing.JTextField Telefone;
+    private javax.swing.JFormattedTextField Telefone;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox2;
